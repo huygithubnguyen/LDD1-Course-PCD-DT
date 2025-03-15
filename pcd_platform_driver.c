@@ -233,7 +233,6 @@ struct platform_driver pcd_platform_driver = {
 
 static int __init pcd_driver_init(void)
 {
-    #if 0
     int ret;
     /* 1. Dynamically allocate a device number for MAX_DEVICES */
     ret = alloc_chrdev_region(&pcdrv_data.device_number, 0, NO_OF_DEVICES, "pcdevs");
@@ -254,13 +253,12 @@ static int __init pcd_driver_init(void)
     /* 3. Register a platform driver */
     platform_driver_register(&pcd_platform_driver);
     pr_info("Pcd Platform Driver Loaded\n");
-#endif
+
     return 0;
 }
 
 static void __exit pcd_driver_cleanup(void)
 {
-    #if 0
     /* 1. Unregister platform driver */
     platform_driver_unregister(&pcd_platform_driver);
 
@@ -269,7 +267,7 @@ static void __exit pcd_driver_cleanup(void)
 
     /* 3. Unregister device number */
     unregister_chrdev_region(pcdrv_data.device_number, NO_OF_DEVICES);
-#endif
+
     pr_info("Pcd Platform Driver Unoaded\n");
 }
 
